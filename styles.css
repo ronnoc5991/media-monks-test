@@ -412,7 +412,7 @@ a, a:visited, a:active {
 }
 
 .logo {
-  position: fixed;
+  position: absolute;
   right: 2vmin;
   bottom: 0;
   height: 12vmin;

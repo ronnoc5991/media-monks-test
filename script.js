@@ -19,8 +19,8 @@ window.addEventListener('load', function () {
     }, 3500);
 });
 window.addEventListener('resize', function () {
-    screenWidth = window.innerWidth;
-    imageWidth = window.innerHeight * 11.320374;
+    screenWidth = screen.width;
+    imageWidth = screen.height * 11.320374;
     transformImage(currentStep);
 });
 leftArrow.addEventListener('click', function () {

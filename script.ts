@@ -22,8 +22,8 @@ window.addEventListener('load', () => {
 })
 
 window.addEventListener('resize', () => {
-    screenWidth = window.innerWidth;
-    imageWidth = window.innerHeight * 11.320374;
+    screenWidth = screen.width;
+    imageWidth = screen.height * 11.320374;
     transformImage(currentStep);
 })
 
