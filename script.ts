@@ -46,7 +46,6 @@ let currentStep: number;
 
 //Controller  ------------------------------------------------------
 function updateApp (stepNumber: string) {
-    console.log(stepNumber);
     updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
