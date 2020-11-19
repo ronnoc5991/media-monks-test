@@ -41,7 +41,6 @@ for (var i = 0; i < steps.length; i++) {
 var currentStep;
 //Controller  ------------------------------------------------------
 function updateApp(stepNumber) {
-    console.log(stepNumber);
     updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
