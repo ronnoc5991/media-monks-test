@@ -46,17 +46,17 @@ for (let i = 0; i < steps.length; i++) {
 
 //Controller  ------------------------------------------------------
 function handleClick (stepNumber: string) {
-    changeStep(stepNumber);
+    updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
     updateArrows(currentStep);
-    changeText(currentStep);
-    displayStepCountText(currentStep);
+    updateText(currentStep);
+    updateStepCountText(currentStep);
 }
 
 // Logic -----------------------------------------------------------
 
-function changeStep(stepNumber: string) {
+function updateStep(stepNumber: string) {
     currentStep = parseInt(stepNumber);
 }
 
@@ -65,36 +65,51 @@ function changeStep(stepNumber: string) {
 function transformImage(currentStep: number) {
     switch (currentStep) {
         case 0:
-            backgroundImage.style.transform = 'translate(0)';
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .05) - (screenWidth / 2) }px)`;
+            } else {
+                backgroundImage.style.transform = 'translate(0)';
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 1:
-            backgroundImage.style.transform = `translate(-${ imageWidth * .11 }px)`;
+            if (screenWidth < 1000) { //mobile
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .20) - (screenWidth / 2) }px)`;
+            } else {
+                backgroundImage.style.transform = `translate(-${ imageWidth * .11 }px)`;
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 2:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .19 }px)`;
             backgroundImage.style.transform = `translate(-${ (imageWidth * .28) - (screenWidth / 2) }px)`;
             endContainer.style.transform = 'translate(100%)';
             break;
         case 3:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .31 }px)`;
-            backgroundImage.style.transform = `translate(-${ (imageWidth * .39) - (screenWidth / 2) }px)`;
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .35) - (screenWidth / 2) }px)`;
+            } else {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .38) - (screenWidth / 2) }px)`;
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 4:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .42 }px)`;
-            backgroundImage.style.transform = `translate(-${ (imageWidth * .51) - (screenWidth / 2) }px)`;
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .48) - (screenWidth / 2) }px)`;
+            } else {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .51) - (screenWidth / 2) }px)`;
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 5:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .54 }px)`;
-            backgroundImage.style.transform = `translate(-${ (imageWidth * .63) - ( screenWidth / 2 ) }px)`;
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .59) - ( screenWidth / 2 ) }px)`;
+            } else {
+                backgroundImage.style.transform = `translate(-${ (imageWidth * .63) - ( screenWidth / 2 ) }px)`;
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 6:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .66 }px)`;
-            backgroundImage.style.transform = `translate(-${ (imageWidth * .75) - (screenWidth / 2) }px)`;
+            backgroundImage.style.transform = `translate(-${ (imageWidth * .83) - (screenWidth) }px)`;
             endContainer.style.transform = 'translate(100%)';
             break;
         case 7:
@@ -147,22 +162,22 @@ function updateArrows (currentStep: number) {
     }
 }
 
-function changeText(currentStep: number) {
+function updateText(currentStep: number) {
     for (let i = 0; i < textDivs.length; i++) {
         textDivs[i].style.opacity = '0';
         textDivs[i].style.display = 'none';
     }
     for (let i = 0; i < textDivs.length; i++) {
         if (parseInt(textDivs[i].dataset.showOn) === currentStep) {
+            textDivs[i].style.display = 'block';
             setTimeout(() => {
                 textDivs[i].style.opacity = '1';
-                textDivs[i].style.display = 'block';
             }, 1000);
         }
     }
 }
 
-function displayStepCountText(currentStep: number) {
+function updateStepCountText(currentStep: number) {
     if (document.getElementById('step-counter-text')) {
         body.removeChild(document.getElementById('step-counter-text'));
     }
@@ -174,8 +189,10 @@ function displayStepCountText(currentStep: number) {
         let stepText = document.createElement('p');
         stepText.innerHTML = `Step ${currentStep} out of 8 on the path to digital enlightenment`;
         stepTextDiv.appendChild(stepText);
+        stepTextDiv.style.opacity = '0';
+        body.appendChild(stepTextDiv);
         setTimeout(() => {
-            body.appendChild(stepTextDiv);
+            stepTextDiv.style.opacity = '1';
         }, 1000);
     }
 }

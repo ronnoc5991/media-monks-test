@@ -290,6 +290,7 @@ a, a:visited, a:active {
           transform: translate(100%);
   -webkit-transition: all 1000ms ease-in-out;
   transition: all 1000ms ease-in-out;
+  width: 100%;
 }
 
 .end-container h1 {
@@ -334,9 +335,8 @@ a, a:visited, a:active {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 1vmin;
   height: 60%;
-  width: 50%;
+  width: 225px;
   margin-left: auto;
 }
 
@@ -352,6 +352,7 @@ a, a:visited, a:active {
 .headline {
   position: absolute;
   z-index: 3;
+  font-size: 5em;
 }
 
 .headline h1 {
@@ -367,7 +368,6 @@ a, a:visited, a:active {
 .headline-1 {
   top: 20px;
   left: 20px;
-  font-size: 5em;
 }
 
 .headline-2 {
@@ -439,5 +439,97 @@ a, a:visited, a:active {
 .sub-header-1 {
   bottom: 10vmin;
   left: 20px;
+}
+
+@media (max-width: 1000px) {
+  .sub-header-1 {
+    bottom: 10vh;
+    text-align: center;
+    width: 100%;
+  }
+  .headline-2 {
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .headline-3 {
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .headline-4 {
+    text-align: center;
+    top: 35%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .headline-5 {
+    width: 100%;
+    text-align: center;
+    top: 35%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .headline-6 {
+    text-align: center;
+    top: 35%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .headline-7 {
+    top: 35%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+  }
+  .headline-8 {
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+  .headline-9 {
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+  .step-map-container {
+    bottom: 5vh;
+    left: 50%;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+  }
+  .logo {
+    position: fixed;
+    right: 2vmin;
+    bottom: 5vh;
+    -webkit-transform: translate(0, 50%);
+            transform: translate(0, 50%);
+    height: 12vmin;
+  }
+  #step-counter-text {
+    bottom: 10vh;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    text-align: center;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

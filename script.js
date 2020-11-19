@@ -40,51 +40,71 @@ for (var i = 0; i < steps.length; i++) {
 }
 //Controller  ------------------------------------------------------
 function handleClick(stepNumber) {
-    changeStep(stepNumber);
+    updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
     updateArrows(currentStep);
-    changeText(currentStep);
-    displayStepCountText(currentStep);
+    updateText(currentStep);
+    updateStepCountText(currentStep);
 }
 // Logic -----------------------------------------------------------
-function changeStep(stepNumber) {
+function updateStep(stepNumber) {
     currentStep = parseInt(stepNumber);
 }
 // DOM Manipulation ------------------------------------------------
 function transformImage(currentStep) {
     switch (currentStep) {
         case 0:
-            backgroundImage.style.transform = 'translate(0)';
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .05) - (screenWidth / 2)) + "px)";
+            }
+            else {
+                backgroundImage.style.transform = 'translate(0)';
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 1:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .11 + "px)";
+            if (screenWidth < 1000) { //mobile
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .20) - (screenWidth / 2)) + "px)";
+            }
+            else {
+                backgroundImage.style.transform = "translate(-" + imageWidth * .11 + "px)";
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 2:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .19 }px)`;
             backgroundImage.style.transform = "translate(-" + ((imageWidth * .28) - (screenWidth / 2)) + "px)";
             endContainer.style.transform = 'translate(100%)';
             break;
         case 3:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .31 }px)`;
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .39) - (screenWidth / 2)) + "px)";
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .35) - (screenWidth / 2)) + "px)";
+            }
+            else {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .38) - (screenWidth / 2)) + "px)";
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 4:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .42 }px)`;
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .51) - (screenWidth / 2)) + "px)";
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .48) - (screenWidth / 2)) + "px)";
+            }
+            else {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .51) - (screenWidth / 2)) + "px)";
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 5:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .54 }px)`;
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .63) - (screenWidth / 2)) + "px)";
+            if (screenWidth < 1000) {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .59) - (screenWidth / 2)) + "px)";
+            }
+            else {
+                backgroundImage.style.transform = "translate(-" + ((imageWidth * .63) - (screenWidth / 2)) + "px)";
+            }
             endContainer.style.transform = 'translate(100%)';
             break;
         case 6:
-            // backgroundImage.style.transform = `translate(-${ imageWidth * .66 }px)`;
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .75) - (screenWidth / 2)) + "px)";
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .83) - (screenWidth)) + "px)";
             endContainer.style.transform = 'translate(100%)';
             break;
         case 7:
@@ -136,16 +156,16 @@ function updateArrows(currentStep) {
         }, 1000);
     }
 }
-function changeText(currentStep) {
+function updateText(currentStep) {
     for (var i = 0; i < textDivs.length; i++) {
         textDivs[i].style.opacity = '0';
         textDivs[i].style.display = 'none';
     }
     var _loop_2 = function (i) {
         if (parseInt(textDivs[i].dataset.showOn) === currentStep) {
+            textDivs[i].style.display = 'block';
             setTimeout(function () {
                 textDivs[i].style.opacity = '1';
-                textDivs[i].style.display = 'block';
             }, 1000);
         }
     };
@@ -153,7 +173,7 @@ function changeText(currentStep) {
         _loop_2(i);
     }
 }
-function displayStepCountText(currentStep) {
+function updateStepCountText(currentStep) {
     if (document.getElementById('step-counter-text')) {
         body.removeChild(document.getElementById('step-counter-text'));
     }
@@ -165,8 +185,10 @@ function displayStepCountText(currentStep) {
         var stepText = document.createElement('p');
         stepText.innerHTML = "Step " + currentStep + " out of 8 on the path to digital enlightenment";
         stepTextDiv_1.appendChild(stepText);
+        stepTextDiv_1.style.opacity = '0';
+        body.appendChild(stepTextDiv_1);
         setTimeout(function () {
-            body.appendChild(stepTextDiv_1);
+            stepTextDiv_1.style.opacity = '1';
         }, 1000);
     }
 }

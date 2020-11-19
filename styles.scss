@@ -175,10 +175,6 @@ a, a:visited, a:active {
             background-color: white;
         }
     }
-
-    // .step-container:nth-of-type(10) {
-    //     border-right: 2px solid transparent;
-    // }
 }
 
 #step-counter-text {
@@ -236,10 +232,10 @@ a, a:visited, a:active {
     height: 100vh;
     padding: 2vmin;
     z-index: 1;
-    // border: 1px solid red;
     text-align: end;
     transform: translate(100%);
     transition: all 1000ms ease-in-out;
+    width: 100%;
 
     h1 {
         font-family: klavika-regular;
@@ -261,7 +257,6 @@ a, a:visited, a:active {
         width: 100%;
         padding-right: 2vmin;
         transform: translate(-50%, -50%);
-        // border: 1px solid red;
         white-space: nowrap;
         height: 15vh;
         display: flex;
@@ -272,9 +267,9 @@ a, a:visited, a:active {
     .contacts {
         display: flex;
         justify-content: space-between;
-        margin: 1vmin;
+        // margin: 1vmin;
         height: 60%;
-        width: 50%;
+        width: 225px;
         margin-left: auto;
 
         a, a:visited, a:active {
@@ -292,6 +287,7 @@ a, a:visited, a:active {
 .headline {
     position: absolute;
     z-index: 3;
+    font-size: 5em;
 
     h1 {
         font-family: klavika-regular;
@@ -307,7 +303,6 @@ a, a:visited, a:active {
 .headline-1 {
     top: 20px;
     left: 20px;
-    font-size: 5em;
 }
 
 .headline-2 {
@@ -371,4 +366,97 @@ a, a:visited, a:active {
 .sub-header-1 {
     bottom: 10vmin;
     left: 20px;
+}
+
+@media (max-width: 1000px) {
+
+    .sub-header-1 {
+        bottom: 10vh;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .headline-2 {
+        top: 40%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+    
+    .headline-3 {
+        top: 40%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+    
+    .headline-4 {
+        text-align: center;
+        top: 35%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .headline-5 {
+        width: 100%;
+        text-align: center;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .headline-6 {
+        text-align: center;
+        top: 35%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .headline-7 {
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+    }
+    
+    .headline-8 {
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+    }
+    
+    .headline-9 {
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+    }
+
+    .step-map-container {
+        bottom: 5vh;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+    .logo {
+        position: fixed;
+        right: 2vmin;
+        bottom: 5vh;
+        transform: translate(0, 50%);
+        height: 12vmin;
+    }
+
+    #step-counter-text {
+        bottom: 10vh;
+        left: 50%;
+        transform: translate(-50%, 0);
+        text-align: center;
+        width: 100%;
+    }
 }
