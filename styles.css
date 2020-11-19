@@ -86,6 +86,8 @@ a, a:visited, a:active {
   right: 0;
   bottom: 0;
   left: 0;
+  height: 100vh;
+  width: 100vw;
   z-index: 10;
   -webkit-transition: opacity 500ms ease-in-out;
   transition: opacity 500ms ease-in-out;

@@ -7,8 +7,8 @@ const rightArrow = document.getElementById('rightArrow');
 const steps: any = document.getElementsByClassName('step');
 const textDivs: any = document.getElementsByClassName('text');
 const endContainer = document.getElementById('end-container');
-let screenWidth = window.innerWidth;
-let imageWidth = window.innerHeight * 11.320374;
+let screenWidth = window.visualViewport.width;
+let imageWidth = window.visualViewport.height * 11.320374;
 
 // Event Listeners ------------------------------------------------
 
@@ -22,8 +22,8 @@ window.addEventListener('load', () => {
 })
 
 window.addEventListener('resize', () => {
-    screenWidth = window.innerWidth;
-    imageWidth = window.innerHeight * 11.320374;
+    screenWidth = window.visualViewport.width;
+    imageWidth = window.visualViewport.height * 11.320374;
     transformImage(currentStep);
 })
 
