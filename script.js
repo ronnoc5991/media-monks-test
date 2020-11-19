@@ -54,7 +54,6 @@ function updateStep(stepNumber) {
 }
 // DOM Manipulation ------------------------------------------------
 function transformImage(currentStep) {
-    console.log(screenWidth);
     switch (currentStep) {
         case 0:
             if (screenWidth < 1000) {
