@@ -170,10 +170,6 @@ a, a:visited, a:active {
         90% { font-size: 15px; }
         100% { font-size: 18px; }
     }
-
-    // patience bounces in
-    //exclamation changes to comma
-    //other text scrolls out from left
 }
 
 @keyframes fadeIn {
@@ -202,7 +198,6 @@ a, a:visited, a:active {
     background-image: url(./assets/images/background.jpg);
     height: 100vh;
     width: 1132vh;
-    background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     transition: all 1000ms ease-in-out;

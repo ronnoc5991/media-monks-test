@@ -302,7 +302,6 @@ a, a:visited, a:active {
   background-image: url(./assets/images/background.jpg);
   height: 100vh;
   width: 1132vh;
-  background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
   -webkit-transition: all 1000ms ease-in-out;

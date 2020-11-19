@@ -7,8 +7,8 @@ var rightArrow = document.getElementById('rightArrow');
 var steps = document.getElementsByClassName('step');
 var textDivs = document.getElementsByClassName('text');
 var endContainer = document.getElementById('end-container');
-var screenWidth = screen.width;
-var imageWidth = screen.height * 11.320374;
+var screenWidth = window.innerWidth;
+var imageWidth = window.innerHeight * 11.320374;
 // Event Listeners ------------------------------------------------
 window.addEventListener('load', function () {
     setTimeout(function () {
@@ -19,8 +19,8 @@ window.addEventListener('load', function () {
     }, 3500);
 });
 window.addEventListener('resize', function () {
-    screenWidth = screen.width;
-    imageWidth = screen.height * 11.320374;
+    screenWidth = window.innerWidth;
+    imageWidth = window.innerHeight * 11.320374;
     transformImage(currentStep);
 });
 leftArrow.addEventListener('click', function () {
@@ -54,6 +54,7 @@ function updateStep(stepNumber) {
 }
 // DOM Manipulation ------------------------------------------------
 function transformImage(currentStep) {
+    console.log(screenWidth);
     switch (currentStep) {
         case 0:
             if (screenWidth < 1000) {
@@ -65,7 +66,7 @@ function transformImage(currentStep) {
             endContainer.style.transform = 'translate(100%)';
             break;
         case 1:
-            if (screenWidth < 1000) { //mobile
+            if (screenWidth < 1000) {
                 backgroundImage.style.transform = "translate(-" + ((imageWidth * .20) - (screenWidth / 2)) + "px)";
             }
             else {

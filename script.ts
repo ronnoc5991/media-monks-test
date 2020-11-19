@@ -7,8 +7,8 @@ const rightArrow = document.getElementById('rightArrow');
 const steps: any = document.getElementsByClassName('step');
 const textDivs: any = document.getElementsByClassName('text');
 const endContainer = document.getElementById('end-container');
-let screenWidth = screen.width;
-let imageWidth = screen.height * 11.320374;
+let screenWidth = window.innerWidth;
+let imageWidth = window.innerHeight * 11.320374;
 
 // Event Listeners ------------------------------------------------
 
@@ -22,8 +22,8 @@ window.addEventListener('load', () => {
 })
 
 window.addEventListener('resize', () => {
-    screenWidth = screen.width;
-    imageWidth = screen.height * 11.320374;
+    screenWidth = window.innerWidth;
+    imageWidth = window.innerHeight * 11.320374;
     transformImage(currentStep);
 })
 
@@ -63,6 +63,7 @@ function updateStep(stepNumber: string) {
 // DOM Manipulation ------------------------------------------------
 
 function transformImage(currentStep: number) {
+    console.log(screenWidth);
     switch (currentStep) {
         case 0:
             if (screenWidth < 1000) {
@@ -73,7 +74,7 @@ function transformImage(currentStep: number) {
             endContainer.style.transform = 'translate(100%)';
             break;
         case 1:
-            if (screenWidth < 1000) { //mobile
+            if (screenWidth < 1000) {
                 backgroundImage.style.transform = `translate(-${ (imageWidth * .20) - (screenWidth / 2) }px)`;
             } else {
                 backgroundImage.style.transform = `translate(-${ imageWidth * .11 }px)`;
