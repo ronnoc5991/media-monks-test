@@ -6,6 +6,7 @@ var leftArrow = document.getElementById('leftArrow');
 var rightArrow = document.getElementById('rightArrow');
 var steps = document.getElementsByClassName('step');
 var textDivs = document.getElementsByClassName('text');
+var endContainer = document.getElementById('end-container');
 var screenWidth = window.innerWidth;
 var imageWidth = window.innerHeight * 11.320374;
 // State of the App ---------------------------------------------------
@@ -16,7 +17,7 @@ window.addEventListener('load', function () {
         loadingScreen.style.opacity = '0';
         setTimeout(function () {
             loadingScreen.style.transform = 'translateY(-100%)';
-        }, 600);
+        }, 200);
     }, 1000);
 });
 window.addEventListener('resize', function () {
@@ -55,33 +56,48 @@ function transformImage(currentStep) {
     switch (currentStep) {
         case 0:
             backgroundImage.style.transform = 'translate(0)';
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 1:
             backgroundImage.style.transform = "translate(-" + imageWidth * .11 + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 2:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .19 + "px)";
+            // backgroundImage.style.transform = `translate(-${ imageWidth * .19 }px)`;
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .28) - (screenWidth / 2)) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 3:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .31 + "px)";
+            // backgroundImage.style.transform = `translate(-${ imageWidth * .31 }px)`;
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .39) - (screenWidth / 2)) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 4:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .42 + "px)";
+            // backgroundImage.style.transform = `translate(-${ imageWidth * .42 }px)`;
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .51) - (screenWidth / 2)) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 5:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .54 + "px)";
+            // backgroundImage.style.transform = `translate(-${ imageWidth * .54 }px)`;
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .63) - (screenWidth / 2)) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 6:
-            backgroundImage.style.transform = "translate(-" + imageWidth * .66 + "px)";
+            // backgroundImage.style.transform = `translate(-${ imageWidth * .66 }px)`;
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .75) - (screenWidth / 2)) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 7:
             backgroundImage.style.transform = "translate(-" + (imageWidth - screenWidth) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 8:
             backgroundImage.style.transform = "translate(-" + (imageWidth - screenWidth) + "px)";
+            endContainer.style.transform = 'translate(100%)';
             break;
         case 9:
             backgroundImage.style.transform = "translate(-" + (imageWidth - (screenWidth / 5)) + "px)";
+            endContainer.style.transform = 'translate(0)';
             break;
         default:
     }
@@ -99,19 +115,23 @@ function updateStepMap(currentStep) {
 function updateArrows(currentStep) {
     if (currentStep === 0) {
         leftArrow.style.opacity = '0';
+        leftArrow.style.display = 'none';
     }
     else {
         if (leftArrow.style.opacity === '0') {
             setTimeout(function () {
+                leftArrow.style.display = 'flex';
                 leftArrow.style.opacity = '1';
             }, 1000);
         }
     }
     if (currentStep === 9) {
         rightArrow.style.opacity = '0';
+        rightArrow.style.display = 'none';
     }
     else {
         setTimeout(function () {
+            rightArrow.style.display = 'flex';
             rightArrow.style.opacity = '1';
         }, 1000);
     }
@@ -119,11 +139,13 @@ function updateArrows(currentStep) {
 function changeText(currentStep) {
     for (var i = 0; i < textDivs.length; i++) {
         textDivs[i].style.opacity = '0';
+        textDivs[i].style.display = 'none';
     }
     var _loop_2 = function (i) {
         if (parseInt(textDivs[i].dataset.showOn) === currentStep) {
             setTimeout(function () {
                 textDivs[i].style.opacity = '1';
+                textDivs[i].style.display = 'block';
             }, 1000);
         }
     };

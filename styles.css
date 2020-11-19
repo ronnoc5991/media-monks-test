@@ -75,6 +75,10 @@ body {
   color: white;
 }
 
+a, a:visited, a:active {
+  color: white;
+}
+
 .loading-screen {
   background-color: black;
   position: fixed;
@@ -155,12 +159,13 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .step-map-container {
   position: absolute;
   border: 2px dotted white;
+  border-right: none;
   width: 220px;
   height: 18px;
   bottom: 30px;
@@ -213,10 +218,6 @@ body {
 
 .step-map-container .step-container .active {
   background-color: white;
-}
-
-.step-map-container .step-container:nth-of-type(10) {
-  border-right: 2px solid transparent;
 }
 
 #step-counter-text {
@@ -283,8 +284,12 @@ body {
   top: 0;
   height: 100vh;
   padding: 2vmin;
-  z-index: -1;
+  z-index: 1;
   text-align: end;
+  -webkit-transform: translate(100%);
+          transform: translate(100%);
+  -webkit-transition: all 1000ms ease-in-out;
+  transition: all 1000ms ease-in-out;
 }
 
 .end-container h1 {
@@ -333,6 +338,10 @@ body {
   height: 60%;
   width: 50%;
   margin-left: auto;
+}
+
+.end-container .contacts a, .end-container .contacts a:visited, .end-container .contacts a:active {
+  text-decoration: none;
 }
 
 .text {

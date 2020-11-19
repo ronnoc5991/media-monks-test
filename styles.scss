@@ -77,6 +77,10 @@ body {
     color: white;
 }
 
+a, a:visited, a:active {
+    color: white;
+}
+
 // --------------- Loading Screen --------------------
 
 .loading-screen {
@@ -130,12 +134,13 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .step-map-container {
     position: absolute;
     border: 2px dotted white;
+    border-right: none;
     width: 220px;
     height: 18px;
     bottom: 30px;
@@ -171,9 +176,9 @@ body {
         }
     }
 
-    .step-container:nth-of-type(10) {
-        border-right: 2px solid transparent;
-    }
+    // .step-container:nth-of-type(10) {
+    //     border-right: 2px solid transparent;
+    // }
 }
 
 #step-counter-text {
@@ -230,9 +235,11 @@ body {
     top: 0;
     height: 100vh;
     padding: 2vmin;
-    z-index: -1;
+    z-index: 1;
     // border: 1px solid red;
     text-align: end;
+    transform: translate(100%);
+    transition: all 1000ms ease-in-out;
 
     h1 {
         font-family: klavika-regular;
@@ -269,6 +276,10 @@ body {
         height: 60%;
         width: 50%;
         margin-left: auto;
+
+        a, a:visited, a:active {
+            text-decoration: none;
+        }
     }
 }
 
