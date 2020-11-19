@@ -306,7 +306,6 @@ a, a:visited, a:active {
   width: 1132vh;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: left bottom;
   -webkit-transition: all 1000ms ease-in-out;
   transition: all 1000ms ease-in-out;
   position: absolute;
@@ -333,6 +332,7 @@ a, a:visited, a:active {
       -ms-flex-align: center;
           align-items: center;
   z-index: 3;
+  font-family: klavikva-regular;
 }
 
 .step-map-container .step-container {

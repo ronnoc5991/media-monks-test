@@ -105,7 +105,7 @@ function transformImage(currentStep) {
             endContainer.style.transform = 'translate(100%)';
             break;
         case 6:
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .83) - (screenWidth)) + "px)";
+            backgroundImage.style.transform = "translate(-" + ((imageWidth * .825) - (screenWidth)) + "px)";
             endContainer.style.transform = 'translate(100%)';
             break;
         case 7:
