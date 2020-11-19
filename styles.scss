@@ -202,10 +202,11 @@ a, a:visited, a:active {
     width: 1132vh;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: left bottom;
     transition: all 1000ms ease-in-out;
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
     z-index: 2;
 }
 
@@ -451,6 +452,10 @@ a, a:visited, a:active {
         padding: 10px;
         font-size: .8em;
     }
+
+    .headline {
+        text-shadow: 1px 1px black;
+    }
     
     .headline-2 {
         top: 40%;
@@ -521,7 +526,7 @@ a, a:visited, a:active {
     }
 
     .logo {
-        position: fixed;
+        position: absolute;
         right: 2vmin;
         bottom: 5vh;
         transform: translate(0, 50%);
