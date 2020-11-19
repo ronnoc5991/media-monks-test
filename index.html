@@ -5,12 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"/>
+    <script>
+        function loadingAnimation (el) {
+            const mist = document.getElementById('mist');
+            const loadingText = document.getElementById('loading-text');
+            const patience = document.getElementById('patience');
+            const exclamationMark = document.getElementById('exclamation');
+            const comma = document.getElementById('comma');
+            const padawan = document.getElementById('padawan');
+            el.classList.add('bounce');
+            mist.classList.add('fade');
+            setTimeout(() => {
+                loadingText.classList.add('animate-text');
+            }, 0 )
+            setTimeout(() => {
+                exclamationMark.style.display = 'none';
+                comma.style.display = 'inline-block';
+                padawan.style.display = 'inline-block';
+                patience.style.transform = 'translateX(-90%)';
+                setTimeout(() => {
+                    padawan.style.transform = 'translateX(-45%)';
+                }, 100) 
+            }, 3000)
+        }
+    </script>
     <title>Media Monks | The Path to Digital Enlightenment</title>
 </head>
 <body>
     <div class="loading-screen" id="loading-screen">
-        <img src="assets/images/monk.png" alt="" id="monk">
-        <div class="light"></div>
+        <img src="assets/images/monk.png" alt="" id="monk" onload="loadingAnimation(this)">
+        <div class="mist" id="mist"></div>
+        <div class="loading-text" id="loading-text">
+            <p><span id="patience">Patience<span id="exclamation">!</span><span id="comma">, </span></span><span id="padawan"> young padawan...</span></p>
+        </div>
     </div>
 
     <div class="background" id="background"></div>
@@ -103,7 +130,7 @@
         <h1><u>BECOME A MONK</u></h1>
         <div class="contact-container">
             <p>Interested in joining our monastery?</p>
-            <p>Check our our current openings on <a href="https://www.mediamonks.com/careers" target="_blank">mediamonks.com/careers</a>.</p>
+            <p>Check out our current openings on <a href="https://www.mediamonks.com/careers" target="_blank">mediamonks.com/careers</a>.</p>
             <div class="contacts">
                 <span><a href="mailto:hilversum@mediamonks.com"><i class="fa fa-envelope"></i>  Mail ons</a></span>
                 <span> <a href="https://www.facebook.com/mediamonks" target="_blank"><i class="fa fa-facebook-f"></i>  Facebook</a></span>

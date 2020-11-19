@@ -1,26 +1,16 @@
-// Grab elements from Document ---------------------------------------
+// Grab DOM elements ---------------------------------------
 const body = document.getElementsByTagName('body')[0];
 const loadingScreen = document.getElementById('loading-screen');
-const monk: any = document.getElementById('monk');
 const backgroundImage = document.getElementById('background');
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
 const steps: any = document.getElementsByClassName('step');
 const textDivs: any = document.getElementsByClassName('text');
 const endContainer = document.getElementById('end-container');
-let screenWidth = window.innerWidth;
-let imageWidth = window.innerHeight * 11.320374;
+let screenWidth = screen.width;
+let imageWidth = screen.height * 11.320374;
 
-
-// State of the App ---------------------------------------------------
-let currentStep: number;
-
-// Add Event Listeners ----------------------------------------------- 
-setTimeout(() => {
-    if (monk.complete) {
-        monk.classList.add('bounce');
-    }
-}, 0)
+// Event Listeners ------------------------------------------------
 
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -28,30 +18,35 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             loadingScreen.style.transform = 'translateY(-100%)';
         }, 500);
-    }, 2000 )
+    }, 3500 )
 })
 
 window.addEventListener('resize', () => {
     screenWidth = window.innerWidth;
     imageWidth = window.innerHeight * 11.320374;
+    transformImage(currentStep);
 })
 
 leftArrow.addEventListener('click', () => {
-    handleClick(String(currentStep - 1));
+    updateApp(String(currentStep - 1));
 })
 
 rightArrow.addEventListener('click', () => {
-    handleClick(String(currentStep + 1));
+    updateApp(String(currentStep + 1));
 })
 
 for (let i = 0; i < steps.length; i++) {
     steps[i].addEventListener('click', () => {
-        handleClick(steps[i].dataset.stepNumber);
+        updateApp(steps[i].dataset.stepNumber);
     })
 }
 
+// State ---------------------------------------------------
+let currentStep: number;
+
 //Controller  ------------------------------------------------------
-function handleClick (stepNumber: string) {
+function updateApp (stepNumber: string) {
+    console.log(stepNumber);
     updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
@@ -127,7 +122,11 @@ function transformImage(currentStep: number) {
             endContainer.style.transform = 'translate(100%)';
             break;
         case 9:
-            backgroundImage.style.transform = `translate(-${ imageWidth - (screenWidth / 5) }px)`;
+            if (screenWidth < 375) {
+                backgroundImage.style.transform = `translate(-${imageWidth}px)`;
+            } else {
+                backgroundImage.style.transform = `translate(-${ imageWidth - (screenWidth / 6) }px)`;
+            }
             endContainer.style.transform = 'translate(0)';
             break;
         default: 
@@ -203,4 +202,6 @@ function updateStepCountText(currentStep: number) {
     }
 }
 
-handleClick('0');
+
+// Initialize -----------------------------------------------------
+updateApp('0');

@@ -81,7 +81,7 @@ a, a:visited, a:active {
 
 .loading-screen {
   background-color: black;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -95,17 +95,17 @@ a, a:visited, a:active {
   position: absolute;
   top: 40%;
   left: 50%;
-  -webkit-transform: translate(-50%, -40%);
-          transform: translate(-50%, -40%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   height: 0;
 }
 
 .loading-screen .bounce {
-  -webkit-animation: bounceIn 300ms ease-in forwards, levitate 3000ms ease-in-out infinite 500ms;
-          animation: bounceIn 300ms ease-in forwards, levitate 3000ms ease-in-out infinite 500ms;
+  -webkit-animation: bounceIn 300ms ease-in forwards, levitate 3000ms ease-in-out infinite 300ms;
+          animation: bounceIn 300ms ease-in forwards, levitate 3000ms ease-in-out infinite 300ms;
 }
 
-.loading-screen .light {
+.loading-screen .mist {
   position: absolute;
   top: 40%;
   left: 49%;
@@ -117,29 +117,102 @@ a, a:visited, a:active {
   width: .1vmin;
   height: .1vmin;
   z-index: -1;
-  -webkit-animation: fadeIn 300ms ease-in forwards 300ms;
-          animation: fadeIn 300ms ease-in forwards 300ms;
+  -webkit-box-shadow: 0 0 70px 35px white;
+          box-shadow: 0 0 70px 35px white;
+  opacity: 0;
+}
+
+.loading-screen .fade {
+  -webkit-animation: fadeIn 300ms ease-in forwards;
+          animation: fadeIn 300ms ease-in forwards;
+}
+
+.loading-screen .loading-text {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-family: klavika-regular;
+  font-style: italic;
+  font-size: 1px;
+  width: 100%;
+  text-align: center;
+}
+
+.loading-screen .loading-text span {
+  position: relative;
+  display: inline-block;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  white-space: nowrap;
+}
+
+.loading-screen .loading-text #exclamation {
+  display: inline-block;
+}
+
+.loading-screen .loading-text #comma {
+  display: none;
+}
+
+.loading-screen .loading-text #padawan {
+  display: none;
+  position: absolute;
+  -webkit-transform: translateX(-60%);
+          transform: translateX(-60%);
+}
+
+.loading-screen .animate-text {
+  -webkit-animation: loadingTextAnimation 400ms ease-in forwards;
+          animation: loadingTextAnimation 400ms ease-in forwards;
+}
+
+@-webkit-keyframes loadingTextAnimation {
+  0% {
+    font-size: 1px;
+  }
+  80% {
+    font-size: 20px;
+  }
+  90% {
+    font-size: 15px;
+  }
+  100% {
+    font-size: 18px;
+  }
+}
+
+@keyframes loadingTextAnimation {
+  0% {
+    font-size: 1px;
+  }
+  80% {
+    font-size: 20px;
+  }
+  90% {
+    font-size: 15px;
+  }
+  100% {
+    font-size: 18px;
+  }
 }
 
 @-webkit-keyframes fadeIn {
   0% {
-    -webkit-box-shadow: 0 0 0 0 white;
-            box-shadow: 0 0 0 0 white;
+    opacity: 0;
   }
   100% {
-    -webkit-box-shadow: 0 0 70px 35px white;
-            box-shadow: 0 0 70px 35px white;
+    opacity: .8;
   }
 }
 
 @keyframes fadeIn {
   0% {
-    -webkit-box-shadow: 0 0 0 0 white;
-            box-shadow: 0 0 0 0 white;
+    opacity: 0;
   }
   100% {
-    -webkit-box-shadow: 0 0 70px 35px white;
-            box-shadow: 0 0 70px 35px white;
+    opacity: .8;
   }
 }
 
@@ -157,7 +230,7 @@ a, a:visited, a:active {
             transform: translate(-50%, -40%);
   }
   100% {
-    height: auto;
+    height: 149px;
   }
 }
 
@@ -175,7 +248,7 @@ a, a:visited, a:active {
             transform: translate(-50%, -40%);
   }
   100% {
-    height: auto;
+    height: 149px;
   }
 }
 
@@ -304,7 +377,7 @@ a, a:visited, a:active {
 }
 
 .arrow-container {
-  position: fixed;
+  position: absolute;
   height: 100vh;
   width: 100px;
   display: -webkit-box;
@@ -391,8 +464,8 @@ a, a:visited, a:active {
   left: 50%;
   width: 100%;
   padding-right: 2vmin;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -55%);
+          transform: translate(-50%, -55%);
   white-space: nowrap;
   height: 15vh;
   display: -webkit-box;
@@ -525,6 +598,10 @@ a, a:visited, a:active {
     text-align: center;
     width: 100%;
     left: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: .8em;
   }
   .headline-2 {
     top: 40%;
@@ -609,6 +686,7 @@ a, a:visited, a:active {
             transform: translate(-50%, 0);
     text-align: center;
     width: 100%;
+    font-size: .8em;
   }
 }
 /*# sourceMappingURL=styles.css.map */

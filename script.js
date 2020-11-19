@@ -1,51 +1,47 @@
-// Grab elements from Document ---------------------------------------
+// Grab DOM elements ---------------------------------------
 var body = document.getElementsByTagName('body')[0];
 var loadingScreen = document.getElementById('loading-screen');
-var monk = document.getElementById('monk');
 var backgroundImage = document.getElementById('background');
 var leftArrow = document.getElementById('leftArrow');
 var rightArrow = document.getElementById('rightArrow');
 var steps = document.getElementsByClassName('step');
 var textDivs = document.getElementsByClassName('text');
 var endContainer = document.getElementById('end-container');
-var screenWidth = window.innerWidth;
-var imageWidth = window.innerHeight * 11.320374;
-// State of the App ---------------------------------------------------
-var currentStep;
-// Add Event Listeners ----------------------------------------------- 
-setTimeout(function () {
-    if (monk.complete) {
-        monk.classList.add('bounce');
-    }
-}, 0);
+var screenWidth = screen.width;
+var imageWidth = screen.height * 11.320374;
+// Event Listeners ------------------------------------------------
 window.addEventListener('load', function () {
     setTimeout(function () {
         loadingScreen.style.opacity = '0';
         setTimeout(function () {
             loadingScreen.style.transform = 'translateY(-100%)';
         }, 500);
-    }, 2000);
+    }, 3500);
 });
 window.addEventListener('resize', function () {
     screenWidth = window.innerWidth;
     imageWidth = window.innerHeight * 11.320374;
+    transformImage(currentStep);
 });
 leftArrow.addEventListener('click', function () {
-    handleClick(String(currentStep - 1));
+    updateApp(String(currentStep - 1));
 });
 rightArrow.addEventListener('click', function () {
-    handleClick(String(currentStep + 1));
+    updateApp(String(currentStep + 1));
 });
 var _loop_1 = function (i) {
     steps[i].addEventListener('click', function () {
-        handleClick(steps[i].dataset.stepNumber);
+        updateApp(steps[i].dataset.stepNumber);
     });
 };
 for (var i = 0; i < steps.length; i++) {
     _loop_1(i);
 }
+// State ---------------------------------------------------
+var currentStep;
 //Controller  ------------------------------------------------------
-function handleClick(stepNumber) {
+function updateApp(stepNumber) {
+    console.log(stepNumber);
     updateStep(stepNumber);
     transformImage(currentStep);
     updateStepMap(currentStep);
@@ -122,7 +118,12 @@ function transformImage(currentStep) {
             endContainer.style.transform = 'translate(100%)';
             break;
         case 9:
-            backgroundImage.style.transform = "translate(-" + (imageWidth - (screenWidth / 5)) + "px)";
+            if (screenWidth < 375) {
+                backgroundImage.style.transform = "translate(-" + imageWidth + "px)";
+            }
+            else {
+                backgroundImage.style.transform = "translate(-" + (imageWidth - (screenWidth / 6)) + "px)";
+            }
             endContainer.style.transform = 'translate(0)';
             break;
         default:
@@ -198,4 +199,5 @@ function updateStepCountText(currentStep) {
         }, 1000);
     }
 }
-handleClick('0');
+// Initialize -----------------------------------------------------
+updateApp('0');
