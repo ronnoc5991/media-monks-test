@@ -1,6 +1,7 @@
 // Grab elements from Document ---------------------------------------
 const body = document.getElementsByTagName('body')[0];
 const loadingScreen = document.getElementById('loading-screen');
+const monk: any = document.getElementById('monk');
 const backgroundImage = document.getElementById('background');
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
@@ -14,15 +15,20 @@ let imageWidth = window.innerHeight * 11.320374;
 // State of the App ---------------------------------------------------
 let currentStep: number;
 
+// Add Event Listeners ----------------------------------------------- 
+setTimeout(() => {
+    if (monk.complete) {
+        monk.classList.add('bounce');
+    }
+}, 0)
 
-// Add Event Listeners -----------------------------------------------
 window.addEventListener('load', () => {
     setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.transform = 'translateY(-100%)';
-        }, 200);
-    }, 1000 )
+        }, 500);
+    }, 2000 )
 })
 
 window.addEventListener('resize', () => {

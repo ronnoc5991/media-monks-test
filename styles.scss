@@ -97,30 +97,47 @@ a, a:visited, a:active {
         position: absolute;
         top: 40%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        animation: levitate 3000ms ease-in-out infinite;
+        transform: translate(-50%, -40%);
+        height: 0;
+    }
+    
+    .bounce {
+        animation: bounceIn 300ms ease-in forwards, levitate 3000ms ease-in-out infinite 500ms;
     }
 
-    // .light {
-    //     position: absolute;
-    //     top: 40%;
-    //     left: 50%;
-    //     transform: translate(-50%, -50%);
-    //     border-radius: 50%;
-    //     background-color: yellow;
-    //     width: 1px;
-    //     height: 1px;
-    //     box-shadow: 0 0 10vmin 5vmin yellow;
-    //     z-index: -1;
-    // }
+    .light {
+        position: absolute;
+        top: 40%;
+        left: 49%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: white;
+        opacity: .7;
+        width: .1vmin;
+        height: .1vmin;
+        z-index: -1;
+        animation: fadeIn 300ms ease-in forwards 300ms;
+    }
+}
+
+@keyframes fadeIn {
+    0% {box-shadow: 0 0 0 0 white;}
+    100% {box-shadow: 0 0 70px 35px white;}
+}
+
+@keyframes bounceIn {
+    0% { height: 1px;  }
+    70% { transform: translate(-50%, -70px)}
+    95% { height: 149px; transform: translate(-50%, -40%)}
+    100% { height: auto }
 }
 
 @keyframes levitate {
-    0% { transform: translate(-50%, -50%) }
-    25% { transform: translate(-50%, -20px) }
-    50% { transform: translate(-50%, -50%) }
-    75% { transform: translate(-50%, -20px) }
-    100% { transform: translate(-50%, -50%) }
+    0% { transform: translate(-50%, -40%) }
+    25% { transform: translate(-50%, -50%) }
+    50% { transform: translate(-50%, -40%) }
+    75% { transform: translate(-50%, -50%) }
+    100% { transform: translate(-50%, -40%) }
 }
 
 .background {
