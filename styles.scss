@@ -90,11 +90,8 @@ a, a:visited, a:active {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
     z-index: 10;
     transition: opacity 500ms ease-in-out;
-    // -webkit-backface-visibility: hidden;
 
     img {
         position: absolute;
@@ -137,18 +134,12 @@ a, a:visited, a:active {
         font-size: 1px;
         width: 100%;
         text-align: center;
-        // display: flex;
-        // justify-content: center;
 
         span {
             position: relative;
             display: inline-block;
             transition: all 200ms ease-in-out;
             white-space: nowrap;
-        }
-
-        #exclamation {
-            display: inline-block;
         }
 
         #comma {
@@ -166,12 +157,13 @@ a, a:visited, a:active {
         animation: loadingTextAnimation 400ms ease-in forwards;        
     }
 
-    @keyframes loadingTextAnimation {
-        0% { font-size: 1px; }
-        80% { font-size: 20px; }
-        90% { font-size: 15px; }
-        100% { font-size: 18px; }
-    }
+}
+
+@keyframes loadingTextAnimation {
+    0% { font-size: 1px; }
+    80% { font-size: 20px; }
+    90% { font-size: 15px; }
+    100% { font-size: 18px; }
 }
 
 @keyframes fadeIn {
@@ -221,7 +213,7 @@ a, a:visited, a:active {
     grid-template-columns: repeat(10, 1fr);
     justify-content: space-around;
     align-items: center;
-    z-index: 3;
+    z-index: 5;
     font-family: klavikva-regular;
 
     .step-container {
@@ -262,7 +254,7 @@ a, a:visited, a:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 4;
 
     i {
         font-size: 8vmin;
@@ -340,7 +332,6 @@ a, a:visited, a:active {
     .contacts {
         display: flex;
         justify-content: space-between;
-        // margin: 1vmin;
         height: 60%;
         width: 225px;
         margin-left: auto;
@@ -455,6 +446,7 @@ a, a:visited, a:active {
 
     .headline {
         text-shadow: 1px 1px black;
+        width: 100%;
     }
     
     .headline-2 {
@@ -475,12 +467,10 @@ a, a:visited, a:active {
         text-align: center;
         top: 35%;
         left: 50%;
-        width: 100%;
         transform: translate(-50%, -50%);
     }
     
     .headline-5 {
-        width: 100%;
         text-align: center;
         top: 35%;
         left: 50%;
@@ -500,14 +490,12 @@ a, a:visited, a:active {
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
-        width: 100%;
     }
     
     .headline-8 {
         top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
         text-align: center;
     }
     
@@ -515,7 +503,6 @@ a, a:visited, a:active {
         top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
         text-align: center;
     }
 

@@ -6,9 +6,7 @@ var leftArrow = document.getElementById('leftArrow');
 var rightArrow = document.getElementById('rightArrow');
 var steps = document.getElementsByClassName('step');
 var textDivs = document.getElementsByClassName('text');
-var endContainer = document.getElementById('end-container');
-var screenWidth = window.visualViewport.width;
-var imageWidth = window.visualViewport.height * 11.320374;
+var contactContainer = document.getElementById('end-container');
 // Event Listeners ------------------------------------------------
 window.addEventListener('load', function () {
     setTimeout(function () {
@@ -19,19 +17,19 @@ window.addEventListener('load', function () {
     }, 3500);
 });
 window.addEventListener('resize', function () {
-    screenWidth = window.visualViewport.width;
-    imageWidth = window.visualViewport.height * 11.320374;
-    transformImage(currentStep);
+    screenWidth = window.innerWidth;
+    imageWidth = window.innerHeight * 11.320374;
+    transformBackgroundImage(currentStep);
 });
 leftArrow.addEventListener('click', function () {
-    updateApp(String(currentStep - 1));
+    updateApp(currentStep - 1);
 });
 rightArrow.addEventListener('click', function () {
-    updateApp(String(currentStep + 1));
+    updateApp(currentStep + 1);
 });
 var _loop_1 = function (i) {
     steps[i].addEventListener('click', function () {
-        updateApp(steps[i].dataset.stepNumber);
+        updateApp(parseInt(steps[i].dataset.stepNumber));
     });
 };
 for (var i = 0; i < steps.length; i++) {
@@ -39,100 +37,60 @@ for (var i = 0; i < steps.length; i++) {
 }
 // State ---------------------------------------------------
 var currentStep;
+var screenWidth = window.innerWidth;
+var imageWidth = window.innerHeight * 11.320374;
 //Controller  ------------------------------------------------------
 function updateApp(stepNumber) {
     updateStep(stepNumber);
-    transformImage(currentStep);
+    transformBackgroundImage(currentStep);
+    handleContentContainer(currentStep);
     updateStepMap(currentStep);
     updateArrows(currentStep);
-    updateText(currentStep);
+    updateMainText(currentStep);
     updateStepCountText(currentStep);
 }
 // Logic -----------------------------------------------------------
 function updateStep(stepNumber) {
-    currentStep = parseInt(stepNumber);
+    (stepNumber >= 0 && stepNumber <= 9) ? currentStep = stepNumber : undefined;
 }
 // DOM Manipulation ------------------------------------------------
-function transformImage(currentStep) {
+function transformBackgroundImage(currentStep) {
+    backgroundImage.style.transform = "translate(" + getTransformValue(currentStep) + "px)";
+}
+function smallerScreen() {
+    return (screenWidth < 1000);
+}
+function getTransformValue(currentStep) {
     switch (currentStep) {
         case 0:
-            if (screenWidth < 1000) {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .05) - (screenWidth / 2)) + "px)";
-            }
-            else {
-                backgroundImage.style.transform = 'translate(0)';
-            }
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return smallerScreen() ? -((imageWidth * .05) - (screenWidth / 2)) : 0;
         case 1:
-            if (screenWidth < 1000) {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .20) - (screenWidth / 2)) + "px)";
-            }
-            else {
-                backgroundImage.style.transform = "translate(-" + imageWidth * .11 + "px)";
-            }
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return smallerScreen() ? -((imageWidth * .20) - (screenWidth / 2)) : -(imageWidth * .11);
         case 2:
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .28) - (screenWidth / 2)) + "px)";
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return -((imageWidth * .28) - (screenWidth / 2));
         case 3:
-            if (screenWidth < 1000) {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .35) - (screenWidth / 2)) + "px)";
-            }
-            else {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .38) - (screenWidth / 2)) + "px)";
-            }
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return smallerScreen() ? -((imageWidth * .35) - (screenWidth / 2)) : -((imageWidth * .38) - (screenWidth / 2));
         case 4:
-            if (screenWidth < 1000) {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .48) - (screenWidth / 2)) + "px)";
-            }
-            else {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .51) - (screenWidth / 2)) + "px)";
-            }
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return smallerScreen() ? -((imageWidth * .48) - (screenWidth / 2)) : -((imageWidth * .51) - (screenWidth / 2));
         case 5:
-            if (screenWidth < 1000) {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .59) - (screenWidth / 2)) + "px)";
-            }
-            else {
-                backgroundImage.style.transform = "translate(-" + ((imageWidth * .63) - (screenWidth / 2)) + "px)";
-            }
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return smallerScreen() ? -((imageWidth * .59) - (screenWidth / 2)) : -((imageWidth * .63) - (screenWidth / 2));
         case 6:
-            backgroundImage.style.transform = "translate(-" + ((imageWidth * .825) - (screenWidth)) + "px)";
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return -((imageWidth * .825) - (screenWidth));
         case 7:
-            backgroundImage.style.transform = "translate(-" + (imageWidth - screenWidth) + "px)";
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return -(imageWidth - screenWidth);
         case 8:
-            backgroundImage.style.transform = "translate(-" + (imageWidth - screenWidth) + "px)";
-            endContainer.style.transform = 'translate(100%)';
-            break;
+            return -(imageWidth - screenWidth);
         case 9:
-            if (screenWidth < 375) {
-                backgroundImage.style.transform = "translate(-" + imageWidth + "px)";
-            }
-            else {
-                backgroundImage.style.transform = "translate(-" + (imageWidth - (screenWidth / 6)) + "px)";
-            }
-            endContainer.style.transform = 'translate(0)';
-            break;
+            return (screenWidth < 375) ? -imageWidth : -(imageWidth - (screenWidth / 6));
         default:
     }
+}
+function handleContentContainer(currentStep) {
+    (currentStep === 9) ? contactContainer.style.transform = 'translate(0)' : contactContainer.style.transform = 'translate(100%';
 }
 function updateStepMap(currentStep) {
     for (var i = 0; i < steps.length; i++) {
         steps[i].classList.remove("active");
-    }
-    for (var i = 0; i < steps.length; i++) {
         if (steps[i].dataset.stepNumber == currentStep) {
             steps[i].classList.add("active");
         }
@@ -145,8 +103,8 @@ function updateArrows(currentStep) {
     }
     else {
         if (leftArrow.style.opacity === '0') {
+            leftArrow.style.display = 'flex';
             setTimeout(function () {
-                leftArrow.style.display = 'flex';
                 leftArrow.style.opacity = '1';
             }, 1000);
         }
@@ -156,13 +114,13 @@ function updateArrows(currentStep) {
         rightArrow.style.display = 'none';
     }
     else {
+        rightArrow.style.display = 'flex';
         setTimeout(function () {
-            rightArrow.style.display = 'flex';
             rightArrow.style.opacity = '1';
         }, 1000);
     }
 }
-function updateText(currentStep) {
+function updateMainText(currentStep) {
     for (var i = 0; i < textDivs.length; i++) {
         textDivs[i].style.opacity = '0';
         textDivs[i].style.display = 'none';
@@ -199,4 +157,4 @@ function updateStepCountText(currentStep) {
     }
 }
 // Initialize -----------------------------------------------------
-updateApp('0');
+updateApp(0);

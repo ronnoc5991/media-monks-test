@@ -86,8 +86,6 @@ a, a:visited, a:active {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
   z-index: 10;
   -webkit-transition: opacity 500ms ease-in-out;
   transition: opacity 500ms ease-in-out;
@@ -148,10 +146,6 @@ a, a:visited, a:active {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   white-space: nowrap;
-}
-
-.loading-screen .loading-text #exclamation {
-  display: inline-block;
 }
 
 .loading-screen .loading-text #comma {
@@ -331,7 +325,7 @@ a, a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 3;
+  z-index: 5;
   font-family: klavikva-regular;
 }
 
@@ -391,7 +385,7 @@ a, a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 3;
+  z-index: 4;
 }
 
 .arrow-container i {
@@ -607,6 +601,7 @@ a, a:visited, a:active {
   }
   .headline {
     text-shadow: 1px 1px black;
+    width: 100%;
   }
   .headline-2 {
     top: 40%;
@@ -626,12 +621,10 @@ a, a:visited, a:active {
     text-align: center;
     top: 35%;
     left: 50%;
-    width: 100%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
   }
   .headline-5 {
-    width: 100%;
     text-align: center;
     top: 35%;
     left: 50%;
@@ -652,14 +645,12 @@ a, a:visited, a:active {
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
   }
   .headline-8 {
     top: 25%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    width: 100%;
     text-align: center;
   }
   .headline-9 {
@@ -667,7 +658,6 @@ a, a:visited, a:active {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    width: 100%;
     text-align: center;
   }
   .step-map-container {
