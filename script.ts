@@ -47,13 +47,17 @@ let imageWidth = window.innerHeight * 11.320374;
 //Controller  ------------------------------------------------------
 function updateApp (stepNumber: number) {
     updateStep(stepNumber);
-    transformBackgroundImage(currentStep);
-    handleContentContainer(currentStep);
-    updateStepMap(currentStep);
-    updateArrows(currentStep);
-    updateMainText(currentStep);
-    updateStepCountText(currentStep);
+    updateDom(currentStep);
 }
+
+function updateDom (step: number) {
+    transformBackgroundImage(step);
+    handleContentContainer(step);
+    updateStepMap(step);
+    updateArrows(step);
+    updateMainText(step);
+    updateStepCountText(step);
+} 
 
 // Logic -----------------------------------------------------------
 
